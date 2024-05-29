@@ -1395,6 +1395,23 @@ module RBI
     end
   end
 
+  class TypeAlias < Const
+    extend T::Sig
+
+    sig do
+      params(
+        name: String,
+        value: String,
+        loc: T.nilable(Loc),
+        comments: T::Array[Comment],
+        block: T.nilable(T.proc.params(node: Const).void),
+      ).void
+    end
+    def initialize(name, value, loc: nil, comments: [], &block)
+      super(name, "T.type_alias { #{value} }", loc: loc, comments: comments, &block)
+    end
+  end
+
   class TypeMember < NodeWithComments
     extend T::Sig
 

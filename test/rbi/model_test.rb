@@ -113,6 +113,9 @@ module RBI
           tree << Helper.new("foo") do |node|
             node.comments << Comment.new("comment")
           end
+          tree << TypeAlias.new("foo", "T.any(String, Integer)") do |node|
+            node.comments << Comment.new("comment")
+          end
           tree << TypeMember.new("foo", "type_member") do |node|
             node.comments << Comment.new("comment")
           end
@@ -192,6 +195,9 @@ module RBI
 
         # comment
         foo!
+
+        # comment
+        foo = T.type_alias { T.any(String, Integer) }
 
         # comment
         foo = type_member

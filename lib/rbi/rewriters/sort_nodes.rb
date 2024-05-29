@@ -63,6 +63,7 @@ module RBI
             83
           end
         when SingletonClass       then 90
+        when TypeAlias            then 95
         when Scope, Const         then 100
         else
           110

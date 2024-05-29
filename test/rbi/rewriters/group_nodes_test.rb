@@ -28,6 +28,7 @@ module RBI
       rbi << AttrReader.new(:bar)
       rbi << AttrAccessor.new(:foo, :a, :z)
       rbi << RequiresAncestor.new("RA")
+      rbi << TypeAlias.new("TA", "String")
 
       rbi.group_nodes!
       rbi.sort_nodes!
@@ -58,6 +59,7 @@ module RBI
 
         class << self; end
 
+        TA = T.type_alias { String }
         C = 42
         module S1; end
         class S2; end
